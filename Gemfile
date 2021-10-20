@@ -28,13 +28,18 @@ end
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 # gem "bcrypt", "~> 3.1.7"
 
 # To use Jbuilder templates for JSON
 gem 'jbuilder'
 gem 'byebug'
 gem 'strong_parameters', '0.2.3'
+gem 'sidekiq', '4.2.10'
+source 'http://rubygems.org'
+# gem 'sidekiq-scheduler', '~> 2.0'
+gem 'sidekiq-scheduler', :source => 'http://rubygems.org/'
+gem 'test-unit', '~> 3.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'
