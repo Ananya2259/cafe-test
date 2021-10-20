@@ -1,0 +1,4 @@
+:schedule:
+  archive_worker:
+    every: '1m'
+    class:  ArchiveWorker

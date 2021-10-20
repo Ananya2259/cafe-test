@@ -16,14 +16,12 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_user_logged_in
-    puts "++++++++====++++++++++++++++++++++++++++++++loggedin"
     unless current_user
       redirect_to "/"
     end
   end
 
   def current_user #memoization
-    puts "++++++++====++++++++++++++++++++++++++++++++current user"
     return @current_user if @current_user
     current_user_id = session[:current_user_id]
     if current_user_id

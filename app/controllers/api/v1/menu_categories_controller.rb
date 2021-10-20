@@ -4,10 +4,9 @@ class Api::V1::MenuCategoriesController < Api::V1::ApplicationController
 
   def index
     if @condition
-      menu_categories = MenuCategory.all.where(@condition)
-    end
-    unless @limit.blank?
-      menu_categories = MenuCategory.all.limit(@limit).offset(@offset * @limit) unless @offset.blank?
+      menu_categories = MenuCategory.where(@condition)
+    else 
+      menu_categories = MenuCategory.all.limit(@limit).offset(@offset * @limit) unless @offset.blank?      
     end
     render json: menu_categories.as_json(only: [:name, :status])
   end
@@ -29,7 +28,7 @@ class Api::V1::MenuCategoriesController < Api::V1::ApplicationController
   end
 
   def update
-    @item.update(menu_category_params)
+    @item.update_attributes(menu_category_params)
     render status: 200, json: {
       message: "update sucessfull",
     }

@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
   has_many :order_items
+  attr_accessible :user_id,:address,:status,:archive
 
   def self.order_display(user_id)
     user = User.find(user_id)

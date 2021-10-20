@@ -3,11 +3,10 @@ class Api::V1::MenuItemsController < Api::V1::ApplicationController
   skip_before_filter :ensure_user_logged_in
 
   def index
-    if @condition
-      menu_items = MenuItem.all.where(@condition)
-    end
-    unless @limit.blank?
-      menu_items = MenuItem.all.limit(@limit).offset(@offset * @limit) unless @offset.blank?
+   if @condition
+      menu_items = MenuItem.where(@condition)
+    else 
+      menu_items = MenuItem.all.limit(@limit).offset(@offset * @limit) unless @offset.blank?      
     end
     render json: menu_items.as_json(only: [:name, :description, :price, :menu_category_id])
   end
@@ -30,7 +29,7 @@ class Api::V1::MenuItemsController < Api::V1::ApplicationController
   end
 
   def update
-    @item.update(menu_item_params)
+    @item.update_attributes(menu_item_params)
     render status: 200, json: {
       message: "update sucessfull",
     }
